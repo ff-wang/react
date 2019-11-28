@@ -8,7 +8,13 @@ import './css/login.less'
 import logo from './imgs/logo.png'
 const {Item} = Form
 
-
+@connect(
+  state => ({isLogin:state.userInfo.isLogin}),
+  {
+    saveUserInfo:createSaveUserInfoAction,
+  }
+)
+@Form.create()
 class Login extends Component{
 
   //点击登录按钮的回调
@@ -118,13 +124,13 @@ class Login extends Component{
     )
   }
 }
-
+export default Login
 //从redux中获取state和操作state的方法
-export default connect(
-  state => ({isLogin:state.userInfo.isLogin}),
-  {
-    saveUserInfo:createSaveUserInfoAction,
-  }
-)(Form.create()(Login))
+// export default connect(
+//   state => ({isLogin:state.userInfo.isLogin}),
+//   {
+//     saveUserInfo:createSaveUserInfoAction,
+//   }
+// )(Form.create()(Login))
 
 
